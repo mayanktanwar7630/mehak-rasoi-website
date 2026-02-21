@@ -147,7 +147,13 @@ body {
 <!-- Navbar -->
 <div class="navbar">
     <div class="logo">Mehak Rasoi</div>
-    <button class="login-btn">Login</button>
+
+    <div style="display:flex;gap:10px;align-items:center;">
+        <div id="cart" style="background:#22c55e;padding:8px 12px;border-radius:10px;">
+            🛒 0
+        </div>
+        <button class="login-btn" onclick="openLogin()">Login</button>
+    </div>
 </div>
 
 <!-- Hero -->
@@ -216,6 +222,33 @@ body {
 </div>
     
 </body>
+    <div id="loginBox" style="display:none;position:fixed;top:0;left:0;width:100%;height:100%;background:#000000cc;justify-content:center;align-items:center;">
+
+    <div style="background:#0f172a;padding:20px;border-radius:15px;width:300px;text-align:center;">
+        <h2>Login</h2>
+
+        <input id="userInput" placeholder="Enter Email or Phone"
+        style="width:100%;padding:10px;margin:10px 0;border-radius:10px;border:none;">
+
+        <button onclick="sendOTP()" style="width:100%;padding:10px;background:#22c55e;border:none;border-radius:10px;">
+            Send OTP
+        </button>
+
+        <div id="otpSection" style="display:none;">
+            <input id="otpInput" placeholder="Enter OTP"
+            style="width:100%;padding:10px;margin:10px 0;border-radius:10px;border:none;">
+
+            <button onclick="verifyOTP()" style="width:100%;padding:10px;background:#22c55e;border:none;border-radius:10px;">
+                Verify
+            </button>
+        </div>
+
+        <button onclick="closeLogin()" style="margin-top:10px;background:red;color:white;padding:8px;border:none;border-radius:10px;">
+            Close
+        </button>
+    </div>
+
+    </div>
 </html>
 <script>
 
@@ -272,6 +305,39 @@ function filterCategory(cat) {
 function addToCart() {
     cart++;
     document.getElementById("cart").innerText = "🛒 " + cart;
+}
+
+</script>
+<script>
+
+let generatedOTP = "";
+
+function openLogin() {
+    document.getElementById("loginBox").style.display = "flex";
+}
+
+function closeLogin() {
+    document.getElementById("loginBox").style.display = "none";
+}
+
+// Fake OTP generator
+function sendOTP() {
+    generatedOTP = Math.floor(1000 + Math.random() * 9000);
+    alert("Your OTP is: " + generatedOTP); // demo only
+
+    document.getElementById("otpSection").style.display = "block";
+}
+
+// Verify OTP
+function verifyOTP() {
+    let userOTP = document.getElementById("otpInput").value;
+
+    if (userOTP == generatedOTP) {
+        alert("Login Successful ✅");
+        closeLogin();
+    } else {
+        alert("Wrong OTP ❌");
+    }
 }
 
 </script>
