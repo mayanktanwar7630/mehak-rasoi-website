@@ -27,86 +27,34 @@ body {
     font-weight: bold;
 }
 
+.right {
+    display: flex;
+    gap: 10px;
+    align-items: center;
+}
+
 .login-btn {
     background: #22c55e;
     border: none;
-    padding: 8px 18px;
+    padding: 8px 15px;
     border-radius: 20px;
-    font-weight: bold;
-}
-
-/* Hero */
-.hero {
-    position: relative;
-}
-
-.hero img {
-    width: 100%;
-    height: 260px;
-    object-fit: cover;
-    opacity: 0.5;
-}
-
-.hero-text {
-    position: absolute;
-    top: 30%;
-    left: 20px;
-}
-
-.hero-text h1 {
-    font-size: 28px;
-    margin: 0;
-}
-
-.hero-text span {
-    color: #22c55e;
-}
-
-.hero-text button {
-    margin-top: 10px;
-    padding: 10px 20px;
-    background: #22c55e;
-    border: none;
-    border-radius: 25px;
-    font-weight: bold;
 }
 
 /* Section */
 .section {
+    max-width: 900px;
+    margin: auto;
     padding: 20px;
 }
 
-.section p {
-    color: gray;
-}
-
-/* Categories */
+/* Grid */
 .grid {
     display: grid;
     grid-template-columns: repeat(2, 1fr);
     gap: 15px;
 }
 
-.card {
-    position: relative;
-    border-radius: 15px;
-    overflow: hidden;
-}
-
-.card img {
-    width: 100%;
-    height: 140px;
-    object-fit: cover;
-    filter: brightness(0.7);
-}
-
-.card h3 {
-    position: absolute;
-    bottom: 10px;
-    left: 10px;
-}
-
-/* Products */
+/* Product Card */
 .product {
     background: #0f172a;
     border-radius: 15px;
@@ -116,7 +64,7 @@ body {
 
 .product img {
     width: 100%;
-    height: 140px;
+    height: 120px;
     object-fit: cover;
 }
 
@@ -130,42 +78,35 @@ body {
 }
 
 .cart-btn {
-    display: block;
     margin: 10px;
-    padding: 10px;
+    padding: 8px;
     background: #22c55e;
     border: none;
-    border-radius: 20px;
-    font-weight: bold;
+    border-radius: 10px;
     width: calc(100% - 20px);
 }
-    .navbar {
-    display: flex;
-    justify-content: space-between;
-    align-items: center;
+
+/* Buttons */
+.filter-btn {
+    margin: 5px;
+    padding: 8px 12px;
+    background: #111;
+    border: 1px solid #22c55e;
+    color: white;
+    border-radius: 10px;
 }
 
-.navbar div {
-    display: flex;
-    align-items: center;
-    gap: 10px;
-}
-    .section {
-    padding: 20px;
-    max-width: 900px;
-    margin: auto;   /* THIS centers everything */
-}
-
-.grid {
-    display: grid;
-    grid-template-columns: repeat(2, 1fr);
-    gap: 15px;
-}
-
-@media (min-width: 768px) {
-    .grid {
-        grid-template-columns: repeat(3, 1fr);
-    }
+/* Login Popup */
+#loginBox {
+    display: none;
+    position: fixed;
+    top:0;
+    left:0;
+    width:100%;
+    height:100%;
+    background:#000000cc;
+    justify-content:center;
+    align-items:center;
 }
 </style>
 </head>
@@ -176,80 +117,35 @@ body {
 <div class="navbar">
     <div class="logo">Mehak Rasoi</div>
 
-    <div style="display:flex;gap:10px;align-items:center;">
-        <div id="cart" style="background:#22c55e;padding:8px 12px;border-radius:10px;">
-            🛒 0
-        </div>
+    <div class="right">
+        <div id="cart">🛒 0</div>
         <button class="login-btn" onclick="openLogin()">Login</button>
     </div>
 </div>
 
-<!-- Hero -->
-<div class="hero">
-    <img src="https://images.unsplash.com/photo-1606787366850-de6330128bfc">
-    <div class="hero-text">
-        <h1>Fresh Groceries,<br><span>Delivered Fast</span></h1>
-        <button>Shop Now</button>
+<!-- Shop Section -->
+<div class="section">
+
+    <input id="search" placeholder="Search products..."
+    style="width:100%;padding:10px;border-radius:10px;border:none;margin-bottom:10px">
+
+    <!-- Category -->
+    <div>
+        <button class="filter-btn" onclick="filterCategory('all')">All</button>
+        <button class="filter-btn" onclick="filterCategory('dairy')">Dairy</button>
+        <button class="filter-btn" onclick="filterCategory('grocery')">Grocery</button>
+        <button class="filter-btn" onclick="filterCategory('snacks')">Snacks</button>
     </div>
-</div>
-
-<!-- Categories -->
-<div class="section">
-    <h2>Shop by Category</h2>
-    <p>Browse our wide range of products</p>
-
-    <div class="grid">
-        <div class="card">
-            <img src="https://images.unsplash.com/photo-1542838132-92c53300491e">
-            <h3>Grocery</h3>
-        </div>
-
-        <div class="card">
-            <img src="https://images.unsplash.com/photo-1563636619-e9143da7973b">
-            <h3>Dairy</h3>
-        </div>
-
-        <div class="card">
-            <img src="https://images.unsplash.com/photo-1504754524776-8f4f37790ca0">
-            <h3>Breakfast</h3>
-        </div>
-
-        <div class="card">
-            <img src="https://images.unsplash.com/photo-1546069901-ba9599a7e63c">
-            <h3>Lunch & Dinner</h3>
-        </div>
-
-        <div class="card">
-            <img src="https://images.unsplash.com/photo-1604908811909-3f6c0fefb9d4">
-            <h3>Snacks</h3>
-        </div>
-
-        <div class="card">
-            <img src="https://images.unsplash.com/photo-1581578731548-c64695cc6952">
-            <h3>Household</h3>
-        </div>
-        <div style="padding: 10px;">
-    <button onclick="filterCategory('all')">All</button>
-    <button onclick="filterCategory('dairy')">Dairy</button>
-    <button onclick="filterCategory('grocery')">Grocery</button>
-    <button onclick="filterCategory('snacks')">Snacks</button>
-</div>
-        
-<!-- Products -->
-<div class="section">
-    <h2>Shop</h2>
-    <input id="search" placeholder="Search products..." style="width:100%;padding:10px;border-radius:10px;border:none;margin-bottom:10px">
 
     <div id="products" class="grid"></div>
 </div>
-    
-</body>
-    <div id="loginBox" style="display:none;position:fixed;top:0;left:0;width:100%;height:100%;background:#000000cc;justify-content:center;align-items:center;">
 
+<!-- Login -->
+<div id="loginBox">
     <div style="background:#0f172a;padding:20px;border-radius:15px;width:300px;text-align:center;">
         <h2>Login</h2>
 
-        <input id="userInput" placeholder="Enter Email or Phone"
+        <input id="userInput" placeholder="Email or Phone"
         style="width:100%;padding:10px;margin:10px 0;border-radius:10px;border:none;">
 
         <button onclick="sendOTP()" style="width:100%;padding:10px;background:#22c55e;border:none;border-radius:10px;">
@@ -269,97 +165,85 @@ body {
             Close
         </button>
     </div>
+</div>
 
-    </div>
-</html>
 <script>
 
 let cart = 0;
+let otp = "";
 
+// Products
 let allProducts = [
-    {name: "Verka Milk", category: "dairy", price: 60, img: "https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcTgcoF_ImudovQIWdKMop--sIISNjqDzL33oig56Imj2TvXlEweqMoBxAM&s=10"},
-    {name: "Amul Gold Milk", category: "dairy", price: 65, img: "https://www.bbassets.com/media/uploads/p/l/40239249_1-amul-gold-full-cream-milk-pasteurised-pure-rich-in-protein-calcium.jpg"},
-    {name: "Amul Butter", category: "dairy", price: 55, img: "https://m.media-amazon.com/images/S/aplus-media/sota/95d868ed-6acd-4efc-990f-ee892ff3118d.__CR0,0,970,600_PT0_SX970_V1___.jpg"},
-    {name: "Verka Paneer", category: "dairy", price: 90, img: "https://www.bbassets.com/media/uploads/p/l/40215943_2-verka-paneer.jpg"},
+    {name:"Verka Milk",category:"dairy",price:60,img:"https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcTgcoF_ImudovQIWdKMop--sIISNjqDzL33oig56Imj2TvXlEweqMoBxAM&s=10"},
+    {name:"Amul Gold Milk",category:"dairy",price:65,img:"https://www.bbassets.com/media/uploads/p/l/40239249_1-amul-gold-full-cream-milk-pasteurised-pure-rich-in-protein-calcium.jpg"},
+    {name:"Amul Butter",category:"dairy",price:55,img:"https://m.media-amazon.com/images/S/aplus-media/sota/95d868ed-6acd-4efc-990f-ee892ff3118d.__CR0,0,970,600_PT0_SX970_V1___.jpg"},
+    {name:"Verka Paneer",category:"dairy",price:90,img:"https://www.bbassets.com/media/uploads/p/l/40215943_2-verka-paneer.jpg"},
 
-    {name: "Basmati Rice", category: "grocery", price: 150, img: "https://source.unsplash.com/400x300/?rice"},
-    {name: "Cooking Oil", category: "grocery", price: 120, img: "https://source.unsplash.com/400x300/?oil"},
-    
-    {name: "Maggi", category: "snacks", price: 15, img: "https://source.unsplash.com/400x300/?noodles"},
-    {name: "Chips", category: "snacks", price: 20, img: "https://source.unsplash.com/400x300/?chips"}
+    {name:"Rice",category:"grocery",price:150,img:"https://source.unsplash.com/400x300/?rice"},
+    {name:"Oil",category:"grocery",price:120,img:"https://source.unsplash.com/400x300/?oil"},
+
+    {name:"Maggi",category:"snacks",price:15,img:"https://source.unsplash.com/400x300/?noodles"},
+    {name:"Chips",category:"snacks",price:20,img:"https://source.unsplash.com/400x300/?chips"}
 ];
 
+// Show products
 function showProducts(list) {
-    let html = "";
-    list.forEach((p, index) => {
-        html += `
+    let html="";
+    list.forEach(p=>{
+        html+=`
         <div class="product">
             <img src="${p.img}">
             <h4>${p.name}</h4>
             <div class="price">₹${p.price}</div>
-            <button onclick="addToCart()">Add to Cart</button>
-        </div>
-        `;
+            <button class="cart-btn" onclick="addToCart()">Add</button>
+        </div>`;
     });
-    document.getElementById("products").innerHTML = html;
+    document.getElementById("products").innerHTML=html;
 }
 
 showProducts(allProducts);
 
-// 🔍 Search
-document.getElementById("search").addEventListener("input", function() {
-    let value = this.value.toLowerCase();
-    let filtered = allProducts.filter(p => p.name.toLowerCase().includes(value));
-    showProducts(filtered);
+// Search
+document.getElementById("search").addEventListener("input",function(){
+    let v=this.value.toLowerCase();
+    showProducts(allProducts.filter(p=>p.name.toLowerCase().includes(v)));
 });
 
-// 🧠 Category Filter
-function filterCategory(cat) {
-    if (cat === "all") {
-        showProducts(allProducts);
-    } else {
-        let filtered = allProducts.filter(p => p.category === cat);
-        showProducts(filtered);
-    }
+// Category
+function filterCategory(cat){
+    if(cat==="all") showProducts(allProducts);
+    else showProducts(allProducts.filter(p=>p.category===cat));
 }
 
-// 🛒 Cart
-function addToCart() {
+// Cart
+function addToCart(){
     cart++;
-    document.getElementById("cart").innerText = "🛒 " + cart;
+    document.getElementById("cart").innerText="🛒 "+cart;
 }
 
-</script>
-<script>
-
-let generatedOTP = "";
-
-function openLogin() {
-    document.getElementById("loginBox").style.display = "flex";
+// Login
+function openLogin(){
+    document.getElementById("loginBox").style.display="flex";
+}
+function closeLogin(){
+    document.getElementById("loginBox").style.display="none";
 }
 
-function closeLogin() {
-    document.getElementById("loginBox").style.display = "none";
+// OTP
+function sendOTP(){
+    otp=Math.floor(1000+Math.random()*9000);
+    alert("OTP: "+otp);
+    document.getElementById("otpSection").style.display="block";
 }
-
-// Fake OTP generator
-function sendOTP() {
-    generatedOTP = Math.floor(1000 + Math.random() * 9000);
-    alert("Your OTP is: " + generatedOTP); // demo only
-
-    document.getElementById("otpSection").style.display = "block";
-}
-
-// Verify OTP
-function verifyOTP() {
-    let userOTP = document.getElementById("otpInput").value;
-
-    if (userOTP == generatedOTP) {
-        alert("Login Successful ✅");
+function verifyOTP(){
+    let u=document.getElementById("otpInput").value;
+    if(u==otp){
+        alert("Login success");
         closeLogin();
-    } else {
-        alert("Wrong OTP ❌");
-    }
+    } else alert("Wrong OTP");
 }
 
 </script>
+
+</body>
+</html>
