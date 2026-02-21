@@ -1,63 +1,104 @@
 <!DOCTYPE html>
 <html>
 <head>
-    <title>Mehak Rasoi</title>
-    <style>
-        body {
-            margin: 0;
-            font-family: Arial;
-            background: #0f0f0f;
-            color: white;
-        }
-        header {
-            background: #1a1a1a;
-            padding: 15px;
-            display: flex;
-            justify-content: space-between;
-        }
-        .logo {
-            color: #00ff88;
-            font-size: 20px;
-            font-weight: bold;
-        }
-        .search {
-            width: 40%;
-            padding: 5px;
-        }
-        .banner {
-            padding: 40px;
-            text-align: center;
-            background: linear-gradient(to right, #00ff88, #006644);
-        }
-        .categories {
-            display: grid;
-            grid-template-columns: repeat(3, 1fr);
-            gap: 15px;
-            padding: 20px;
-        }
-        .card {
-            background: #1f1f1f;
-            padding: 20px;
-            text-align: center;
-            border-radius: 10px;
-        }
-        .products {
-            padding: 20px;
-        }
-        .product {
-            background: #1f1f1f;
-            padding: 15px;
-            margin: 10px 0;
-            border-radius: 10px;
-        }
-        button {
-            background: #00ff88;
-            border: none;
-            padding: 10px;
-            border-radius: 5px;
-            cursor: pointer;
-        }
-    </style>
+<title>Mehak Rasoi</title>
+
+<style>
+body {
+    margin: 0;
+    font-family: Arial;
+    background: #0d0d0d;
+    color: white;
+}
+
+/* NAVBAR */
+header {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    padding: 15px;
+    background: #111;
+}
+
+.logo {
+    color: #00ff88;
+    font-size: 22px;
+    font-weight: bold;
+}
+
+.search {
+    padding: 8px;
+    width: 50%;
+    border-radius: 5px;
+    border: none;
+}
+
+/* HERO */
+.banner {
+    padding: 50px;
+    text-align: center;
+    background: linear-gradient(to right, #00ff88, #004d33);
+}
+
+/* CATEGORY */
+.categories {
+    display: grid;
+    grid-template-columns: repeat(3, 1fr);
+    gap: 15px;
+    padding: 20px;
+}
+
+.card {
+    background: #1a1a1a;
+    padding: 20px;
+    text-align: center;
+    border-radius: 12px;
+    transition: 0.3s;
+}
+
+.card:hover {
+    transform: scale(1.05);
+    background: #00ff88;
+    color: black;
+}
+
+/* PRODUCTS */
+.products {
+    padding: 20px;
+}
+
+.grid {
+    display: grid;
+    grid-template-columns: repeat(2, 1fr);
+    gap: 15px;
+}
+
+.product {
+    background: #1a1a1a;
+    padding: 15px;
+    border-radius: 12px;
+}
+
+button {
+    background: #00ff88;
+    border: none;
+    padding: 8px;
+    border-radius: 5px;
+    cursor: pointer;
+}
+
+/* CART */
+.cart {
+    position: fixed;
+    bottom: 10px;
+    right: 10px;
+    background: #00ff88;
+    color: black;
+    padding: 10px;
+    border-radius: 10px;
+}
+</style>
+
 </head>
 
 <body>
@@ -84,25 +125,47 @@
 <div class="products">
     <h2>Popular Items</h2>
 
-    <div class="product">
-        <h3>Milk (1L)</h3>
-        <p>₹60</p>
-        <button>Add to Cart</button>
-    </div>
+    <div class="grid">
 
-    <div class="product">
-        <h3>Paneer (500g)</h3>
-        <p>₹220</p>
-        <button>Add to Cart</button>
-    </div>
+        <div class="product">
+            <h3>Milk (1L)</h3>
+            <p>₹60</p>
+            <button onclick="addToCart()">Add</button>
+        </div>
 
-    <div class="product">
-        <h3>Veg Thali</h3>
-        <p>₹120</p>
-        <button>Add to Cart</button>
-    </div>
+        <div class="product">
+            <h3>Paneer (500g)</h3>
+            <p>₹220</p>
+            <button onclick="addToCart()">Add</button>
+        </div>
 
+        <div class="product">
+            <h3>Veg Thali</h3>
+            <p>₹120</p>
+            <button onclick="addToCart()">Add</button>
+        </div>
+
+        <div class="product">
+            <h3>Snacks Combo</h3>
+            <p>₹80</p>
+            <button onclick="addToCart()">Add</button>
+        </div>
+
+    </div>
 </div>
+
+<div class="cart" id="cart">
+🛒 Cart: 0
+</div>
+
+<script>
+let count = 0;
+
+function addToCart() {
+    count++;
+    document.getElementById("cart").innerText = "🛒 Cart: " + count;
+}
+</script>
 
 </body>
 </html>
