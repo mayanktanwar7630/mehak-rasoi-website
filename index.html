@@ -4,13 +4,14 @@
 <title>Mehak Rasoi</title>
 
 <style>
-body {
-    margin: 0;
-    font-family: Arial;
-    background: #0d0d0d;
-    color: white;
+.product img {
+    border-radius: 10px;
+    margin-bottom: 10px;
 }
 
+.product {
+    box-shadow: 0 0 10px rgba(0,255,136,0.2);
+}
 /* NAVBAR */
 header {
     display: flex;
@@ -122,42 +123,33 @@ button {
     <div class="card">Laundry</div>
 </div>
 
-<div class="products">
-    <h2>Popular Items</h2>
-
-    <div class="grid">
-
-        <div class="product">
-            <h3>Milk (1L)</h3>
-            <p>₹60</p>
-            <button onclick="addToCart()">Add</button>
-        </div>
-
-        <div class="product">
-            <h3>Paneer (500g)</h3>
-            <p>₹220</p>
-            <button onclick="addToCart()">Add</button>
-        </div>
-
-        <div class="product">
-            <h3>Veg Thali</h3>
-            <p>₹120</p>
-            <button onclick="addToCart()">Add</button>
-        </div>
-
-        <div class="product">
-            <h3>Snacks Combo</h3>
-            <p>₹80</p>
-            <button onclick="addToCart()">Add</button>
-        </div>
-
-    </div>
+<div class="product">
+    <img src="https://via.placeholder.com/150" width="100%">
+    <h3>Milk (1L)</h3>
+    <p>₹60</p>
+    <button onclick="addToCart()">Add</button>
 </div>
 
-<div class="cart" id="cart">
-🛒 Cart: 0
+<div class="product">
+    <img src="https://via.placeholder.com/150" width="100%">
+    <h3>Paneer (500g)</h3>
+    <p>₹220</p>
+    <button onclick="addToCart()">Add</button>
 </div>
 
+<div class="product">
+    <img src="https://via.placeholder.com/150" width="100%">
+    <h3>Veg Thali</h3>
+    <p>₹120</p>
+    <button onclick="addToCart()">Add</button>
+</div>
+
+<div class="product">
+    <img src="https://via.placeholder.com/150" width="100%">
+    <h3>Snacks Combo</h3>
+    <p>₹80</p>
+    <button onclick="addToCart()">Add</button>
+</div>
 <script>
 let count = 0;
 
