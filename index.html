@@ -1,0 +1,108 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>Mehak Rasoi</title>
+    <style>
+        body {
+            margin: 0;
+            font-family: Arial;
+            background: #0f0f0f;
+            color: white;
+        }
+        header {
+            background: #1a1a1a;
+            padding: 15px;
+            display: flex;
+            justify-content: space-between;
+        }
+        .logo {
+            color: #00ff88;
+            font-size: 20px;
+            font-weight: bold;
+        }
+        .search {
+            width: 40%;
+            padding: 5px;
+        }
+        .banner {
+            padding: 40px;
+            text-align: center;
+            background: linear-gradient(to right, #00ff88, #006644);
+        }
+        .categories {
+            display: grid;
+            grid-template-columns: repeat(3, 1fr);
+            gap: 15px;
+            padding: 20px;
+        }
+        .card {
+            background: #1f1f1f;
+            padding: 20px;
+            text-align: center;
+            border-radius: 10px;
+        }
+        .products {
+            padding: 20px;
+        }
+        .product {
+            background: #1f1f1f;
+            padding: 15px;
+            margin: 10px 0;
+            border-radius: 10px;
+        }
+        button {
+            background: #00ff88;
+            border: none;
+            padding: 10px;
+            border-radius: 5px;
+            cursor: pointer;
+        }
+    </style>
+</head>
+
+<body>
+
+<header>
+    <div class="logo">Mehak Rasoi</div>
+    <input class="search" placeholder="Search products...">
+</header>
+
+<div class="banner">
+    <h1>Welcome to Mehak Rasoi</h1>
+    <p>Fast Food + Grocery Delivered Same Day</p>
+</div>
+
+<div class="categories">
+    <div class="card">Grocery</div>
+    <div class="card">Breakfast</div>
+    <div class="card">Lunch/Dinner</div>
+    <div class="card">Snacks</div>
+    <div class="card">Household</div>
+    <div class="card">Laundry</div>
+</div>
+
+<div class="products">
+    <h2>Popular Items</h2>
+
+    <div class="product">
+        <h3>Milk (1L)</h3>
+        <p>₹60</p>
+        <button>Add to Cart</button>
+    </div>
+
+    <div class="product">
+        <h3>Paneer (500g)</h3>
+        <p>₹220</p>
+        <button>Add to Cart</button>
+    </div>
+
+    <div class="product">
+        <h3>Veg Thali</h3>
+        <p>₹120</p>
+        <button>Add to Cart</button>
+    </div>
+
+</div>
+
+</body>
+</html>
