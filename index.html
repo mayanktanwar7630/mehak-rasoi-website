@@ -194,6 +194,16 @@ body {
             <img src="https://images.unsplash.com/photo-1581578731548-c64695cc6952">
             <h3>Household</h3>
         </div>
+        <div style="padding: 10px;">
+    <button onclick="filterCategory('all')">All</button>
+    <button onclick="filterCategory('dairy')">Dairy</button>
+    <button onclick="filterCategory('grocery')">Grocery</button>
+    <button onclick="filterCategory('snacks')">Snacks</button>
+</div>
+
+<div id="cart" style="position:fixed;top:10px;right:10px;background:#22c55e;padding:10px;border-radius:10px;">
+🛒 0
+</div>
     </div>
 </div>
 
@@ -209,22 +219,30 @@ body {
 </html>
 <script>
 
+let cart = 0;
+
 let allProducts = [
     {name: "Verka Milk", category: "dairy", price: 60, img: "https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcTgcoF_ImudovQIWdKMop--sIISNjqDzL33oig56Imj2TvXlEweqMoBxAM&s=10"},
     {name: "Amul Gold Milk", category: "dairy", price: 65, img: "https://www.bbassets.com/media/uploads/p/l/40239249_1-amul-gold-full-cream-milk-pasteurised-pure-rich-in-protein-calcium.jpg"},
     {name: "Amul Butter", category: "dairy", price: 55, img: "https://m.media-amazon.com/images/S/aplus-media/sota/95d868ed-6acd-4efc-990f-ee892ff3118d.__CR0,0,970,600_PT0_SX970_V1___.jpg"},
-    {name: "Verka Paneer", category: "dairy", price: 90, img: "https://www.bbassets.com/media/uploads/p/l/40215943_2-verka-paneer.jpg"}
+    {name: "Verka Paneer", category: "dairy", price: 90, img: "https://www.bbassets.com/media/uploads/p/l/40215943_2-verka-paneer.jpg"},
+
+    {name: "Basmati Rice", category: "grocery", price: 150, img: "https://source.unsplash.com/400x300/?rice"},
+    {name: "Cooking Oil", category: "grocery", price: 120, img: "https://source.unsplash.com/400x300/?oil"},
+    
+    {name: "Maggi", category: "snacks", price: 15, img: "https://source.unsplash.com/400x300/?noodles"},
+    {name: "Chips", category: "snacks", price: 20, img: "https://source.unsplash.com/400x300/?chips"}
 ];
 
 function showProducts(list) {
     let html = "";
-    list.forEach(p => {
+    list.forEach((p, index) => {
         html += `
         <div class="product">
             <img src="${p.img}">
             <h4>${p.name}</h4>
             <div class="price">₹${p.price}</div>
-            <button class="cart-btn">Add to Cart</button>
+            <button onclick="addToCart()">Add to Cart</button>
         </div>
         `;
     });
@@ -239,5 +257,21 @@ document.getElementById("search").addEventListener("input", function() {
     let filtered = allProducts.filter(p => p.name.toLowerCase().includes(value));
     showProducts(filtered);
 });
+
+// 🧠 Category Filter
+function filterCategory(cat) {
+    if (cat === "all") {
+        showProducts(allProducts);
+    } else {
+        let filtered = allProducts.filter(p => p.category === cat);
+        showProducts(filtered);
+    }
+}
+
+// 🛒 Cart
+function addToCart() {
+    cart++;
+    document.getElementById("cart").innerText = "🛒 " + cart;
+}
 
 </script>
