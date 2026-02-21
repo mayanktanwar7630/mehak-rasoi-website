@@ -139,6 +139,17 @@ body {
     font-weight: bold;
     width: calc(100% - 20px);
 }
+    .navbar {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+}
+
+.navbar div {
+    display: flex;
+    align-items: center;
+    gap: 10px;
+}
 </style>
 </head>
 
@@ -206,13 +217,7 @@ body {
     <button onclick="filterCategory('grocery')">Grocery</button>
     <button onclick="filterCategory('snacks')">Snacks</button>
 </div>
-
-<div id="cart" style="position:fixed;top:10px;right:10px;background:#22c55e;padding:10px;border-radius:10px;">
-🛒 0
-</div>
-    </div>
-</div>
-
+        
 <!-- Products -->
 <div class="section">
     <h2>Shop</h2>
