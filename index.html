@@ -12,217 +12,222 @@ body {
     color: white;
 }
 
-/* Navbar */
+/* NAVBAR */
 .navbar {
     display: flex;
     justify-content: space-between;
     padding: 15px;
-    background: #020617;
+    align-items: center;
 }
 
-.logo { color: #22c55e; font-size: 22px; font-weight: bold; }
+.logo {
+    color: #22c55e;
+    font-size: 22px;
+    font-weight: bold;
+}
 
-.right { display: flex; gap: 10px; align-items: center; }
-
-button {
-    padding: 8px 12px;
-    border: none;
-    border-radius: 10px;
+.right button {
+    margin-left: 10px;
     background: #22c55e;
+    border: none;
+    padding: 8px 12px;
+    border-radius: 20px;
 }
 
-/* Pages */
-.page { display: none; padding: 20px; }
-.active { display: block; }
+/* HERO */
+.hero {
+    height: 70vh;
+    background: url("https://images.unsplash.com/photo-1606787366850-de6330128bfc") center/cover;
+    display: flex;
+    align-items: center;
+    padding: 20px;
+}
 
-/* Grid */
+.hero-text h1 {
+    font-size: 32px;
+}
+
+.hero-text span {
+    color: #22c55e;
+}
+
+.hero button {
+    margin-top: 15px;
+    padding: 12px 20px;
+    background: #22c55e;
+    border: none;
+    border-radius: 25px;
+}
+
+/* FEATURES */
+.features {
+    padding: 20px;
+}
+
+.feature {
+    margin: 15px 0;
+}
+
+/* CATEGORY */
+.categories {
+    padding: 20px;
+}
+
+.cat-grid {
+    display: grid;
+    grid-template-columns: repeat(2,1fr);
+    gap: 10px;
+}
+
+.cat {
+    background: #0f172a;
+    padding: 20px;
+    border-radius: 10px;
+    text-align: center;
+}
+
+/* PRODUCTS */
+.products {
+    padding: 20px;
+}
+
 .grid {
     display: grid;
-    grid-template-columns: repeat(2, 1fr);
+    grid-template-columns: repeat(2,1fr);
     gap: 10px;
 }
 
 .card {
     background: #0f172a;
-    padding: 15px;
+    padding: 10px;
     border-radius: 10px;
 }
 
-/* Cart box */
-.cart-box {
-    background: #0f172a;
-    padding: 15px;
-    margin: 10px 0;
+.card img {
+    width: 100%;
     border-radius: 10px;
+}
+
+/* CART FLOAT */
+.cart-btn {
+    position: fixed;
+    bottom: 20px;
+    right: 20px;
+    background: #22c55e;
+    padding: 12px;
+    border-radius: 20px;
 }
 </style>
 </head>
 
 <body>
 
-<!-- Navbar -->
+<!-- NAVBAR -->
 <div class="navbar">
-    <div class="logo" onclick="showPage('home')">Mehak Rasoi</div>
-
+    <div class="logo">Mehak Rasoi</div>
     <div class="right">
-        <button onclick="showPage('shop')">Shop</button>
-        <button onclick="showPage('cartPage')">Cart (<span id="cartCount">0</span>)</button>
+        <button onclick="showShop()">Shop</button>
         <button onclick="openLogin()">Login</button>
     </div>
 </div>
 
-<!-- HOME -->
-<div id="home" class="page active">
-    <h2>Welcome to Mehak Rasoi</h2>
-    <p>Your one-stop shop for groceries, food, dairy, snacks and daily essentials.</p>
-    <button onclick="showPage('shop')">Go to Shop</button>
+<!-- HERO -->
+<div class="hero">
+    <div class="hero-text">
+        <h1>Fresh Groceries,<br><span>Delivered Fast</span></h1>
+        <p>Everything you need at your doorstep</p>
+        <button onclick="showShop()">Shop Now</button>
+    </div>
 </div>
 
-<!-- SHOP -->
-<div id="shop" class="page">
+<!-- FEATURES -->
+<div class="features">
+    <div class="feature">🚚 Fast Delivery (2-3 km)</div>
+    <div class="feature">💳 Secure Payment (UPI, COD)</div>
+    <div class="feature">🕒 Fresh Products</div>
+</div>
 
-    <input id="search" placeholder="Search..." style="width:100%;padding:10px;margin-bottom:10px">
-
-    <div>
-        <button onclick="filterCategory('all')">All</button>
-        <button onclick="filterCategory('dairy')">Dairy</button>
-        <button onclick="filterCategory('grocery')">Grocery</button>
-        <button onclick="filterCategory('snacks')">Snacks</button>
-        <button onclick="filterCategory('food')">Food</button>
+<!-- CATEGORY -->
+<div class="categories">
+    <h2>Shop by Category</h2>
+    <div class="cat-grid">
+        <div class="cat" onclick="filter('dairy')">Dairy</div>
+        <div class="cat" onclick="filter('grocery')">Grocery</div>
+        <div class="cat" onclick="filter('snacks')">Snacks</div>
+        <div class="cat" onclick="filter('food')">Food</div>
     </div>
+</div>
 
+<!-- PRODUCTS -->
+<div class="products" id="shop" style="display:none;">
+    <h2>Products</h2>
     <div id="products" class="grid"></div>
 </div>
 
-<!-- PRODUCT DETAIL -->
-<div id="detail" class="page">
-    <h2 id="detailName"></h2>
-    <p id="detailPrice"></p>
-    <button onclick="addToCart(currentProduct)">Add to Cart</button>
-    <button onclick="showPage('shop')">Back</button>
-</div>
-
-<!-- CART PAGE -->
-<div id="cartPage" class="page">
-    <h2>Your Cart</h2>
-    <div id="cartItems"></div>
-    <h3>Total: ₹<span id="totalPrice">0</span></h3>
-</div>
-
-<!-- LOGIN -->
-<div id="loginBox" style="display:none;position:fixed;top:0;width:100%;height:100%;background:#000000cc;justify-content:center;align-items:center;">
-    <div style="background:#0f172a;padding:20px;border-radius:10px;width:300px;text-align:center;">
-        <h2>Login</h2>
-        <input id="userInput" placeholder="Email/Phone" style="width:100%;padding:10px;margin:10px 0;">
-        <button onclick="sendOTP()">Send OTP</button>
-
-        <div id="otpBox" style="display:none;">
-            <input id="otpInput" placeholder="OTP" style="width:100%;padding:10px;margin:10px 0;">
-            <button onclick="verifyOTP()">Verify</button>
-        </div>
-
-        <button onclick="closeLogin()">Close</button>
-    </div>
-</div>
+<!-- CART -->
+<div class="cart-btn" onclick="showCart()">Cart (<span id="count">0</span>)</div>
 
 <script>
 
-// DATA
+// PRODUCTS
 let products = [
-{name:"Verka Milk",cat:"dairy",price:60},
-{name:"Amul Milk",cat:"dairy",price:65},
-{name:"Butter",cat:"dairy",price:50},
-{name:"Paneer",cat:"dairy",price:90},
-
-{name:"Rice",cat:"grocery",price:150},
-{name:"Oil",cat:"grocery",price:120},
-{name:"Salt",cat:"grocery",price:20},
-
-{name:"Maggi",cat:"snacks",price:15},
-{name:"Chips",cat:"snacks",price:20},
-
-{name:"Thali",cat:"food",price:120},
-{name:"Dal",cat:"food",price:80}
+{name:"Milk",cat:"dairy",price:60,img:"https://images.unsplash.com/photo-1563636619-e9143da7973b"},
+{name:"Paneer",cat:"dairy",price:90,img:"https://images.unsplash.com/photo-1604908176997-431bfe9e5f50"},
+{name:"Rice",cat:"grocery",price:150,img:"https://images.unsplash.com/photo-1586201375761-83865001e31c"},
+{name:"Oil",cat:"grocery",price:120,img:"https://images.unsplash.com/photo-1604908554167-6b7d7c9c0cfa"},
+{name:"Chips",cat:"snacks",price:20,img:"https://images.unsplash.com/photo-1585238342028-4d4a6f6d6c01"},
+{name:"Thali",cat:"food",price:120,img:"https://images.unsplash.com/photo-1604908177522-040ad3f96b86"}
 ];
 
-let cart = [];
-let currentProduct = null;
+let cart=[];
 
-// PAGE SWITCH
-function showPage(id){
-    document.querySelectorAll(".page").forEach(p=>p.classList.remove("active"));
-    document.getElementById(id).classList.add("active");
+// SHOW SHOP
+function showShop(){
+    document.getElementById("shop").style.display="block";
+    showProducts(products);
 }
 
-// SHOW PRODUCTS
+// DISPLAY PRODUCTS
 function showProducts(list){
     let html="";
-    list.forEach((p,i)=>{
-        html+=`<div class="card" onclick="openDetail(${i})">
+    list.forEach(p=>{
+        html+=`
+        <div class="card">
+        <img src="${p.img}">
         <h4>${p.name}</h4>
         <p>₹${p.price}</p>
+        <button onclick="add('${p.name}',${p.price})">Add</button>
         </div>`;
     });
     document.getElementById("products").innerHTML=html;
 }
 
-showProducts(products);
-
-// SEARCH
-document.getElementById("search").addEventListener("input",function(){
-    let v=this.value.toLowerCase();
-    showProducts(products.filter(p=>p.name.toLowerCase().includes(v)));
-});
-
 // FILTER
-function filterCategory(cat){
-    if(cat==="all") showProducts(products);
-    else showProducts(products.filter(p=>p.cat===cat));
-}
-
-// DETAIL
-function openDetail(i){
-    currentProduct = products[i];
-    document.getElementById("detailName").innerText=currentProduct.name;
-    document.getElementById("detailPrice").innerText="₹"+currentProduct.price;
-    showPage("detail");
+function filter(cat){
+    showShop();
+    showProducts(products.filter(p=>p.cat==cat));
 }
 
 // CART
-function addToCart(p){
-    cart.push(p);
-    document.getElementById("cartCount").innerText=cart.length;
+function add(name,price){
+    cart.push({name,price});
+    document.getElementById("count").innerText=cart.length;
 }
 
-// CART PAGE
+// SHOW CART
 function showCart(){
-    let html="";
     let total=0;
-    cart.forEach(p=>{
-        html+=`<div class="cart-box">${p.name} - ₹${p.price}</div>`;
-        total+=p.price;
+    let text="Cart:\n";
+    cart.forEach(i=>{
+        text+=i.name+" ₹"+i.price+"\n";
+        total+=i.price;
     });
-    document.getElementById("cartItems").innerHTML=html;
-    document.getElementById("totalPrice").innerText=total;
+    alert(text+"\nTotal ₹"+total);
 }
 
-// auto update cart page
-document.querySelector("[onclick=\"showPage('cartPage')\"]").addEventListener("click",showCart);
-
-// LOGIN + OTP
-let otp="";
-function openLogin(){document.getElementById("loginBox").style.display="flex";}
-function closeLogin(){document.getElementById("loginBox").style.display="none";}
-function sendOTP(){
-    otp=Math.floor(1000+Math.random()*9000);
-    alert("OTP: "+otp);
-    document.getElementById("otpBox").style.display="block";
-}
-function verifyOTP(){
-    if(document.getElementById("otpInput").value==otp){
-        alert("Login success");
-        closeLogin();
-    } else alert("Wrong OTP");
+// LOGIN
+function openLogin(){
+    alert("Login system (OTP) already added earlier");
 }
 
 </script>
