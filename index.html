@@ -1,117 +1,112 @@
 <!DOCTYPE html>
-<html>
+<html lang="en">
 <head>
+<meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
 <title>Mehak Rasoi</title>
 
 <style>
 body {
-  margin:0;
+  margin: 0;
   font-family: Arial;
-  background:#020617;
-  color:white;
+  background: #0b1220;
+  color: white;
 }
 
 /* NAVBAR */
-.navbar{
-  display:flex;
-  justify-content:space-between;
-  align-items:center;
-  padding:15px;
+.navbar {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  padding: 15px;
 }
-.logo{
-  color:#22c55e;
-  font-size:22px;
-  font-weight:bold;
+
+.logo {
+  color: #22c55e;
+  font-size: 24px;
+  font-weight: bold;
 }
-.navbar button{
-  background:#22c55e;
-  border:none;
-  padding:8px 14px;
-  border-radius:20px;
+
+.nav-buttons button {
+  margin-left: 10px;
+  padding: 8px 15px;
+  border-radius: 20px;
+  border: none;
+  background: #22c55e;
+  color: black;
+  cursor: pointer;
 }
 
 /* HERO */
-.hero{
-  height:60vh;
-  background:url("https://images.unsplash.com/photo-1606787366850-de6330128bfc") center/cover;
-  display:flex;
-  align-items:center;
-  padding:20px;
+.hero {
+  position: relative;
+  height: 90vh;
+  background: url('https://images.unsplash.com/photo-1600891964599-f61ba0e24092') center/cover;
 }
-.hero h1{
-  font-size:28px;
+
+.overlay {
+  position: absolute;
+  width: 100%;
+  height: 100%;
+  background: rgba(0,0,0,0.6);
 }
-.hero span{
-  color:#22c55e;
+
+.hero-text {
+  position: absolute;
+  bottom: 80px;
+  left: 20px;
 }
-.hero button{
-  margin-top:10px;
-  padding:10px 15px;
-  border:none;
-  border-radius:20px;
-  background:#22c55e;
+
+.hero-text h1 {
+  font-size: 32px;
+}
+
+.green {
+  color: #22c55e;
+}
+
+.btn {
+  margin-top: 15px;
+  padding: 10px 20px;
+  border-radius: 25px;
+  border: none;
+  background: #22c55e;
+  cursor: pointer;
 }
 
 /* FEATURES */
-.features{
-  padding:20px;
+.features {
+  padding: 20px;
 }
-.feature{
-  margin-bottom:10px;
+
+.feature {
+  display: flex;
+  align-items: center;
+  margin: 15px 0;
+}
+
+.icon {
+  font-size: 25px;
+  margin-right: 10px;
 }
 
 /* CATEGORY */
-.categories{
-  padding:20px;
-}
-.cat-grid{
-  display:grid;
-  grid-template-columns:1fr 1fr;
-  gap:10px;
-}
-.cat{
-  background:#0f172a;
-  padding:20px;
-  text-align:center;
-  border-radius:10px;
+.category {
+  padding: 20px;
 }
 
-/* PRODUCTS */
-.products{
-  padding:20px;
-}
-.grid{
-  display:grid;
-  grid-template-columns:1fr 1fr;
-  gap:10px;
-}
-.card{
-  background:#0f172a;
-  padding:10px;
-  border-radius:10px;
-}
-.card img{
-  width:100%;
-  border-radius:10px;
-}
-.card button{
-  width:100%;
-  margin-top:5px;
-  background:#22c55e;
-  border:none;
-  padding:8px;
-  border-radius:10px;
+.category h2 {
+  font-size: 24px;
 }
 
-/* CART */
-.cart{
-  position:fixed;
-  bottom:20px;
-  right:20px;
-  background:#22c55e;
-  padding:10px 15px;
-  border-radius:20px;
+/* LOADER */
+.loader {
+  margin: 30px auto;
+  text-align: center;
+  background: #1f2937;
+  padding: 10px;
+  border-radius: 30px;
+  width: 200px;
 }
 </style>
 </head>
@@ -121,106 +116,57 @@ body {
 <!-- NAVBAR -->
 <div class="navbar">
   <div class="logo">Mehak Rasoi</div>
-  <div>
-    <button onclick="showShop()">Shop</button>
-    <button onclick="login()">Login</button>
+  <div class="nav-buttons">
+    <button>Shop</button>
+    <button>Cart (0)</button>
+    <button>Login</button>
   </div>
 </div>
 
 <!-- HERO -->
 <div class="hero">
-  <div>
-    <h1>Fresh Groceries,<br><span>Delivered Fast</span></h1>
-    <button onclick="showShop()">Shop Now</button>
+  <div class="overlay"></div>
+  <div class="hero-text">
+    <h1>Fresh Groceries,<br><span class="green">Delivered Fast</span></h1>
+    <p>Everything you need at your doorstep</p>
+    <button class="btn">Shop Now →</button>
   </div>
 </div>
 
 <!-- FEATURES -->
 <div class="features">
-  <div class="feature">🚚 Fast Delivery</div>
-  <div class="feature">💳 Secure Payment</div>
-  <div class="feature">🕒 Fresh Products</div>
-</div>
+  <div class="feature">
+    <div class="icon">🚚</div>
+    <div>
+      <h3>Fast Delivery</h3>
+      <p>Within 2-3 km</p>
+    </div>
+  </div>
 
-<!-- CATEGORY -->
-<div class="categories">
-  <h2>Shop by Category</h2>
-  <div class="cat-grid">
-    <div class="cat" onclick="filter('dairy')">Dairy</div>
-    <div class="cat" onclick="filter('grocery')">Grocery</div>
-    <div class="cat" onclick="filter('snacks')">Snacks</div>
-    <div class="cat" onclick="filter('food')">Food</div>
+  <div class="feature">
+    <div class="icon">🛡️</div>
+    <div>
+      <h3>Secure Payment</h3>
+      <p>UPI, Card, COD</p>
+    </div>
+  </div>
+
+  <div class="feature">
+    <div class="icon">⏱️</div>
+    <div>
+      <h3>Fresh Products</h3>
+      <p>Quality guaranteed</p>
+    </div>
   </div>
 </div>
 
-<!-- PRODUCTS -->
-<div class="products" id="shop" style="display:none;">
-  <h2>Products</h2>
-  <div id="products" class="grid"></div>
+<!-- CATEGORY -->
+<div class="category">
+  <h2>Shop by Category</h2>
+  <p>Browse our wide range of products</p>
+
+  <div class="loader">Spinning up Servers</div>
 </div>
-
-<!-- CART -->
-<div class="cart" onclick="showCart()">
-Cart (<span id="count">0</span>)
-</div>
-
-<script>
-
-let products=[
-{name:"Milk",cat:"dairy",price:60,img:"https://images.unsplash.com/photo-1563636619-e9143da7973b"},
-{name:"Paneer",cat:"dairy",price:80,img:"https://images.unsplash.com/photo-1604908176997-431bfe9e5f50"},
-{name:"Rice",cat:"grocery",price:150,img:"https://images.unsplash.com/photo-1586201375761-83865001e31c"},
-{name:"Oil",cat:"grocery",price:120,img:"https://images.unsplash.com/photo-1604908554167-6b7d7c9c0cfa"},
-{name:"Chips",cat:"snacks",price:20,img:"https://images.unsplash.com/photo-1585238342028-4d4a6f6d6c01"},
-{name:"Meal",cat:"food",price:120,img:"https://images.unsplash.com/photo-1604908177522-040ad3f96b86"}
-];
-
-let cart=[];
-
-function showShop(){
-  document.getElementById("shop").style.display="block";
-  display(products);
-}
-
-function display(list){
-  let data="";
-  list.forEach(p=>{
-    data+=`
-    <div class="card">
-    <img src="${p.img}">
-    <h4>${p.name}</h4>
-    <p>₹${p.price}</p>
-    <button onclick="add('${p.name}',${p.price})">Add</button>
-    </div>`;
-  });
-  document.getElementById("products").innerHTML=data;
-}
-
-function filter(cat){
-  showShop();
-  display(products.filter(p=>p.cat==cat));
-}
-
-function add(name,price){
-  cart.push({name,price});
-  document.getElementById("count").innerText=cart.length;
-}
-
-function showCart(){
-  let total=0;
-  let text="Items:\n";
-  cart.forEach(i=>{
-    text+=i.name+" ₹"+i.price+"\n";
-    total+=i.price;
-  });
-  alert(text+"\nTotal ₹"+total);
-}
-
-function login(){
-  alert("Login page next step");
-}
-
-</script>
 
 </body>
 </html>
