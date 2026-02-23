@@ -1,9 +1,8 @@
 <!DOCTYPE html>
-<html lang="en">
+<html>
 <head>
-<meta charset="UTF-8">
-<meta name="viewport" content="width=device-width, initial-scale=1.0">
 <title>Mehak Rasoi</title>
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
 
 <style>
 body {
@@ -13,100 +12,86 @@ body {
   color: white;
 }
 
-/* NAVBAR */
+/* Navbar */
 .navbar {
   display: flex;
   justify-content: space-between;
-  align-items: center;
   padding: 15px;
+  background: #0b1220;
 }
 
 .logo {
   color: #22c55e;
-  font-size: 24px;
+  font-size: 22px;
   font-weight: bold;
 }
 
 .nav-buttons button {
   margin-left: 10px;
-  padding: 8px 15px;
-  border-radius: 20px;
+  padding: 8px 14px;
   border: none;
+  border-radius: 20px;
   background: #22c55e;
   color: black;
-  cursor: pointer;
 }
 
-/* HERO */
+/* Hero */
 .hero {
-  position: relative;
-  height: 90vh;
-  background: url('https://images.unsplash.com/photo-1600891964599-f61ba0e24092') center/cover;
+  padding: 40px 20px;
 }
 
-.overlay {
-  position: absolute;
-  width: 100%;
-  height: 100%;
-  background: rgba(0,0,0,0.6);
+.hero h1 {
+  font-size: 28px;
 }
 
-.hero-text {
-  position: absolute;
-  bottom: 80px;
-  left: 20px;
-}
-
-.hero-text h1 {
-  font-size: 32px;
-}
-
-.green {
+.hero span {
   color: #22c55e;
 }
 
-.btn {
-  margin-top: 15px;
-  padding: 10px 20px;
-  border-radius: 25px;
-  border: none;
-  background: #22c55e;
-  cursor: pointer;
-}
-
-/* FEATURES */
-.features {
-  padding: 20px;
-}
-
-.feature {
-  display: flex;
-  align-items: center;
-  margin: 15px 0;
-}
-
-.icon {
-  font-size: 25px;
-  margin-right: 10px;
-}
-
-/* CATEGORY */
-.category {
-  padding: 20px;
-}
-
-.category h2 {
-  font-size: 24px;
-}
-
-/* LOADER */
-.loader {
-  margin: 30px auto;
-  text-align: center;
-  background: #1f2937;
+/* Shop */
+.products {
+  display: grid;
+  grid-template-columns: repeat(2,1fr);
+  gap: 10px;
   padding: 10px;
-  border-radius: 30px;
-  width: 200px;
+}
+
+.card {
+  background: #1e293b;
+  padding: 10px;
+  border-radius: 10px;
+}
+
+.card button {
+  background: #22c55e;
+  border: none;
+  padding: 5px;
+  margin-top: 5px;
+}
+
+/* Pages */
+.page {
+  display: none;
+}
+
+.active {
+  display: block;
+}
+
+/* Login */
+.login-box {
+  padding: 20px;
+}
+
+input {
+  width: 100%;
+  padding: 10px;
+  margin: 10px 0;
+}
+
+/* Cart */
+.cart-box {
+  padding: 20px;
 }
 </style>
 </head>
@@ -114,67 +99,109 @@ body {
 <body>
 
 <!-- NAVBAR -->
-<div style="display:flex;justify-content:space-between;align-items:center;padding:15px;background:#0a0f1c;">
-  <h2 style="color:#22c55e;">Mehak Rasoi</h2>
-
-  <div style="display:flex;gap:10px;">
-    <button onclick="goToShop()" style="padding:10px 15px;border:none;border-radius:20px;background:#22c55e;">Shop</button>
-    <button onclick="goToCart()" style="padding:10px 15px;border:none;border-radius:20px;background:#22c55e;">Cart (<span id="cartCount">0</span>)</button>
-    <button onclick="openLogin()" style="padding:10px 15px;border:none;border-radius:20px;background:#22c55e;">Login</button>
+<div class="navbar">
+  <div class="logo">Mehak Rasoi</div>
+  <div class="nav-buttons">
+    <button onclick="showPage('shopPage')">Shop</button>
+    <button onclick="showPage('cartPage')">Cart (<span id="cartCount">0</span>)</button>
+    <button onclick="showPage('loginPage')">Login</button>
   </div>
 </div>
 
-<!-- HERO -->
-<div class="hero">
-  <div class="overlay"></div>
-  <div class="hero-text">
-    <h1>Fresh Groceries,<br><span class="green">Delivered Fast</span></h1>
+<!-- HOME -->
+<div id="homePage" class="active">
+  <div class="hero">
+    <h1>Fresh Groceries, <span>Delivered Fast</span></h1>
     <p>Everything you need at your doorstep</p>
-    <button class="btn">Shop Now →</button>
+    <button onclick="showPage('shopPage')">Shop Now</button>
   </div>
 </div>
 
-<!-- FEATURES -->
-<div class="features">
-  <div class="feature">
-    <div class="icon">🚚</div>
-    <div>
-      <h3>Fast Delivery</h3>
-      <p>Within 2-3 km</p>
-    </div>
-  </div>
+<!-- SHOP -->
+<div id="shopPage" class="page">
+  <h2 style="padding:10px;">Shop</h2>
 
-  <div class="feature">
-    <div class="icon">🛡️</div>
-    <div>
-      <h3>Secure Payment</h3>
-      <p>UPI, Card, COD</p>
+  <div class="products">
+    <div class="card">
+      <h3>Milk (Amul)</h3>
+      ₹60
+      <button onclick="addToCart('Milk',60)">Add</button>
     </div>
-  </div>
 
-  <div class="feature">
-    <div class="icon">⏱️</div>
-    <div>
-      <h3>Fresh Products</h3>
-      <p>Quality guaranteed</p>
+    <div class="card">
+      <h3>Paneer</h3>
+      ₹220
+      <button onclick="addToCart('Paneer',220)">Add</button>
+    </div>
+
+    <div class="card">
+      <h3>Butter</h3>
+      ₹120
+      <button onclick="addToCart('Butter',120)">Add</button>
+    </div>
+
+    <div class="card">
+      <h3>Snacks Combo</h3>
+      ₹80
+      <button onclick="addToCart('Snacks',80)">Add</button>
     </div>
   </div>
 </div>
 
-<!-- CATEGORY -->
-<div class="category">
-  <h2>Shop by Category</h2>
-  <p>Browse our wide range of products</p>
+<!-- CART -->
+<div id="cartPage" class="page">
+  <div class="cart-box">
+    <h2>Cart</h2>
+    <div id="cartItems"></div>
+    <h3>Total: ₹<span id="totalPrice">0</span></h3>
+  </div>
 </div>
+
+<!-- LOGIN -->
+<div id="loginPage" class="page">
+  <div class="login-box">
+    <h2>Login</h2>
+    <input placeholder="Enter Email or Phone">
+    <button onclick="fakeLogin()">Send OTP</button>
+  </div>
+</div>
+
+<!-- SCRIPT -->
 <script>
-function openLogin() {
-  document.getElementById("loginPage").style.display = "block";
+let cart = [];
+let total = 0;
+
+function showPage(page) {
+  document.getElementById("homePage").classList.remove("active");
+  document.getElementById("shopPage").classList.remove("active");
+  document.getElementById("cartPage").classList.remove("active");
+  document.getElementById("loginPage").classList.remove("active");
+
+  document.getElementById(page).classList.add("active");
 }
 
-function goToShop() {
-  document.getElementById("shopPage").style.display = "block";
-  document.getElementById("homePage").style.display = "none";
+function addToCart(name, price) {
+  cart.push({name, price});
+  total += price;
+
+  document.getElementById("cartCount").innerText = cart.length;
+  renderCart();
+}
+
+function renderCart() {
+  let items = "";
+  cart.forEach(item => {
+    items += `<p>${item.name} - ₹${item.price}</p>`;
+  });
+
+  document.getElementById("cartItems").innerHTML = items;
+  document.getElementById("totalPrice").innerText = total;
+}
+
+function fakeLogin() {
+  alert("OTP Sent (Demo)");
 }
 </script>
+
 </body>
 </html>
