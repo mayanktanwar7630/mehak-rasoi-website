@@ -114,12 +114,13 @@ body {
 <body>
 
 <!-- NAVBAR -->
-<div class="navbar">
-  <div class="logo">Mehak Rasoi</div>
-  <div class="nav-buttons">
-    <button>Shop</button>
-    <button>Cart (0)</button>
-    <button>Login</button>
+<div style="display:flex;justify-content:space-between;align-items:center;padding:15px;background:#0a0f1c;">
+  <h2 style="color:#22c55e;">Mehak Rasoi</h2>
+
+  <div style="display:flex;gap:10px;">
+    <button onclick="goToShop()" style="padding:10px 15px;border:none;border-radius:20px;background:#22c55e;">Shop</button>
+    <button onclick="goToCart()" style="padding:10px 15px;border:none;border-radius:20px;background:#22c55e;">Cart (<span id="cartCount">0</span>)</button>
+    <button onclick="openLogin()" style="padding:10px 15px;border:none;border-radius:20px;background:#22c55e;">Login</button>
   </div>
 </div>
 
@@ -167,6 +168,26 @@ body {
 
   <div class="loader">Spinning up Servers</div>
 </div>
+  <script>
+let cart = [];
+
+function goToShop(){
+  alert("Opening Shop Page (you can connect real page later)");
+}
+
+function goToCart(){
+  alert("Cart Items: " + cart.length);
+}
+
+function openLogin(){
+  alert("Login system coming soon");
+}
+
+function addToCart(item){
+  cart.push(item);
+  document.getElementById("cartCount").innerText = cart.length;
+}
+  </script>
 
 </body>
 </html>
