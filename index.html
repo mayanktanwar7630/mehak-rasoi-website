@@ -165,29 +165,16 @@ body {
 <div class="category">
   <h2>Shop by Category</h2>
   <p>Browse our wide range of products</p>
-
-  <div class="loader">Spinning up Servers</div>
 </div>
-  <script>
-let cart = [];
-
-function goToShop(){
-  alert("Opening Shop Page (you can connect real page later)");
+<script>
+function openLogin() {
+  document.getElementById("loginPage").style.display = "block";
 }
 
-function goToCart(){
-  alert("Cart Items: " + cart.length);
+function goToShop() {
+  document.getElementById("shopPage").style.display = "block";
+  document.getElementById("homePage").style.display = "none";
 }
-
-function openLogin(){
-  alert("Login system coming soon");
-}
-
-function addToCart(item){
-  cart.push(item);
-  document.getElementById("cartCount").innerText = cart.length;
-}
-  </script>
-
+</script>
 </body>
 </html>
