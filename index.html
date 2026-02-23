@@ -6,116 +6,112 @@
 
 <style>
 body {
-    margin: 0;
-    font-family: Arial;
-    background: #020617;
-    color: white;
+  margin:0;
+  font-family: Arial;
+  background:#020617;
+  color:white;
 }
 
 /* NAVBAR */
-.navbar {
-    display: flex;
-    justify-content: space-between;
-    padding: 15px;
-    align-items: center;
+.navbar{
+  display:flex;
+  justify-content:space-between;
+  align-items:center;
+  padding:15px;
 }
-
-.logo {
-    color: #22c55e;
-    font-size: 22px;
-    font-weight: bold;
+.logo{
+  color:#22c55e;
+  font-size:22px;
+  font-weight:bold;
 }
-
-.right button {
-    margin-left: 10px;
-    background: #22c55e;
-    border: none;
-    padding: 8px 12px;
-    border-radius: 20px;
+.navbar button{
+  background:#22c55e;
+  border:none;
+  padding:8px 14px;
+  border-radius:20px;
 }
 
 /* HERO */
-.hero {
-    height: 70vh;
-    background: url("https://images.unsplash.com/photo-1606787366850-de6330128bfc") center/cover;
-    display: flex;
-    align-items: center;
-    padding: 20px;
+.hero{
+  height:60vh;
+  background:url("https://images.unsplash.com/photo-1606787366850-de6330128bfc") center/cover;
+  display:flex;
+  align-items:center;
+  padding:20px;
 }
-
-.hero-text h1 {
-    font-size: 32px;
+.hero h1{
+  font-size:28px;
 }
-
-.hero-text span {
-    color: #22c55e;
+.hero span{
+  color:#22c55e;
 }
-
-.hero button {
-    margin-top: 15px;
-    padding: 12px 20px;
-    background: #22c55e;
-    border: none;
-    border-radius: 25px;
+.hero button{
+  margin-top:10px;
+  padding:10px 15px;
+  border:none;
+  border-radius:20px;
+  background:#22c55e;
 }
 
 /* FEATURES */
-.features {
-    padding: 20px;
+.features{
+  padding:20px;
 }
-
-.feature {
-    margin: 15px 0;
+.feature{
+  margin-bottom:10px;
 }
 
 /* CATEGORY */
-.categories {
-    padding: 20px;
+.categories{
+  padding:20px;
 }
-
-.cat-grid {
-    display: grid;
-    grid-template-columns: repeat(2,1fr);
-    gap: 10px;
+.cat-grid{
+  display:grid;
+  grid-template-columns:1fr 1fr;
+  gap:10px;
 }
-
-.cat {
-    background: #0f172a;
-    padding: 20px;
-    border-radius: 10px;
-    text-align: center;
+.cat{
+  background:#0f172a;
+  padding:20px;
+  text-align:center;
+  border-radius:10px;
 }
 
 /* PRODUCTS */
-.products {
-    padding: 20px;
+.products{
+  padding:20px;
+}
+.grid{
+  display:grid;
+  grid-template-columns:1fr 1fr;
+  gap:10px;
+}
+.card{
+  background:#0f172a;
+  padding:10px;
+  border-radius:10px;
+}
+.card img{
+  width:100%;
+  border-radius:10px;
+}
+.card button{
+  width:100%;
+  margin-top:5px;
+  background:#22c55e;
+  border:none;
+  padding:8px;
+  border-radius:10px;
 }
 
-.grid {
-    display: grid;
-    grid-template-columns: repeat(2,1fr);
-    gap: 10px;
-}
-
-.card {
-    background: #0f172a;
-    padding: 10px;
-    border-radius: 10px;
-}
-
-.card img {
-    width: 100%;
-    border-radius: 10px;
-}
-
-/* CART FLOAT */
-.cart-btn {
-    position: fixed;
-    bottom: 20px;
-    right: 20px;
-    background: #22c55e;
-    padding: 12px;
-    border-radius: 20px;
+/* CART */
+.cart{
+  position:fixed;
+  bottom:20px;
+  right:20px;
+  background:#22c55e;
+  padding:10px 15px;
+  border-radius:20px;
 }
 </style>
 </head>
@@ -124,110 +120,104 @@ body {
 
 <!-- NAVBAR -->
 <div class="navbar">
-    <div class="logo">Mehak Rasoi</div>
-    <div class="right">
-        <button onclick="showShop()">Shop</button>
-        <button onclick="openLogin()">Login</button>
-    </div>
+  <div class="logo">Mehak Rasoi</div>
+  <div>
+    <button onclick="showShop()">Shop</button>
+    <button onclick="login()">Login</button>
+  </div>
 </div>
 
 <!-- HERO -->
 <div class="hero">
-    <div class="hero-text">
-        <h1>Fresh Groceries,<br><span>Delivered Fast</span></h1>
-        <p>Everything you need at your doorstep</p>
-        <button onclick="showShop()">Shop Now</button>
-    </div>
+  <div>
+    <h1>Fresh Groceries,<br><span>Delivered Fast</span></h1>
+    <button onclick="showShop()">Shop Now</button>
+  </div>
 </div>
 
 <!-- FEATURES -->
 <div class="features">
-    <div class="feature">🚚 Fast Delivery (2-3 km)</div>
-    <div class="feature">💳 Secure Payment (UPI, COD)</div>
-    <div class="feature">🕒 Fresh Products</div>
+  <div class="feature">🚚 Fast Delivery</div>
+  <div class="feature">💳 Secure Payment</div>
+  <div class="feature">🕒 Fresh Products</div>
 </div>
 
 <!-- CATEGORY -->
 <div class="categories">
-    <h2>Shop by Category</h2>
-    <div class="cat-grid">
-        <div class="cat" onclick="filter('dairy')">Dairy</div>
-        <div class="cat" onclick="filter('grocery')">Grocery</div>
-        <div class="cat" onclick="filter('snacks')">Snacks</div>
-        <div class="cat" onclick="filter('food')">Food</div>
-    </div>
+  <h2>Shop by Category</h2>
+  <div class="cat-grid">
+    <div class="cat" onclick="filter('dairy')">Dairy</div>
+    <div class="cat" onclick="filter('grocery')">Grocery</div>
+    <div class="cat" onclick="filter('snacks')">Snacks</div>
+    <div class="cat" onclick="filter('food')">Food</div>
+  </div>
 </div>
 
 <!-- PRODUCTS -->
 <div class="products" id="shop" style="display:none;">
-    <h2>Products</h2>
-    <div id="products" class="grid"></div>
+  <h2>Products</h2>
+  <div id="products" class="grid"></div>
 </div>
 
 <!-- CART -->
-<div class="cart-btn" onclick="showCart()">Cart (<span id="count">0</span>)</div>
+<div class="cart" onclick="showCart()">
+Cart (<span id="count">0</span>)
+</div>
 
 <script>
 
-// PRODUCTS
-let products = [
+let products=[
 {name:"Milk",cat:"dairy",price:60,img:"https://images.unsplash.com/photo-1563636619-e9143da7973b"},
-{name:"Paneer",cat:"dairy",price:90,img:"https://images.unsplash.com/photo-1604908176997-431bfe9e5f50"},
+{name:"Paneer",cat:"dairy",price:80,img:"https://images.unsplash.com/photo-1604908176997-431bfe9e5f50"},
 {name:"Rice",cat:"grocery",price:150,img:"https://images.unsplash.com/photo-1586201375761-83865001e31c"},
 {name:"Oil",cat:"grocery",price:120,img:"https://images.unsplash.com/photo-1604908554167-6b7d7c9c0cfa"},
 {name:"Chips",cat:"snacks",price:20,img:"https://images.unsplash.com/photo-1585238342028-4d4a6f6d6c01"},
-{name:"Thali",cat:"food",price:120,img:"https://images.unsplash.com/photo-1604908177522-040ad3f96b86"}
+{name:"Meal",cat:"food",price:120,img:"https://images.unsplash.com/photo-1604908177522-040ad3f96b86"}
 ];
 
 let cart=[];
 
-// SHOW SHOP
 function showShop(){
-    document.getElementById("shop").style.display="block";
-    showProducts(products);
+  document.getElementById("shop").style.display="block";
+  display(products);
 }
 
-// DISPLAY PRODUCTS
-function showProducts(list){
-    let html="";
-    list.forEach(p=>{
-        html+=`
-        <div class="card">
-        <img src="${p.img}">
-        <h4>${p.name}</h4>
-        <p>₹${p.price}</p>
-        <button onclick="add('${p.name}',${p.price})">Add</button>
-        </div>`;
-    });
-    document.getElementById("products").innerHTML=html;
+function display(list){
+  let data="";
+  list.forEach(p=>{
+    data+=`
+    <div class="card">
+    <img src="${p.img}">
+    <h4>${p.name}</h4>
+    <p>₹${p.price}</p>
+    <button onclick="add('${p.name}',${p.price})">Add</button>
+    </div>`;
+  });
+  document.getElementById("products").innerHTML=data;
 }
 
-// FILTER
 function filter(cat){
-    showShop();
-    showProducts(products.filter(p=>p.cat==cat));
+  showShop();
+  display(products.filter(p=>p.cat==cat));
 }
 
-// CART
 function add(name,price){
-    cart.push({name,price});
-    document.getElementById("count").innerText=cart.length;
+  cart.push({name,price});
+  document.getElementById("count").innerText=cart.length;
 }
 
-// SHOW CART
 function showCart(){
-    let total=0;
-    let text="Cart:\n";
-    cart.forEach(i=>{
-        text+=i.name+" ₹"+i.price+"\n";
-        total+=i.price;
-    });
-    alert(text+"\nTotal ₹"+total);
+  let total=0;
+  let text="Items:\n";
+  cart.forEach(i=>{
+    text+=i.name+" ₹"+i.price+"\n";
+    total+=i.price;
+  });
+  alert(text+"\nTotal ₹"+total);
 }
 
-// LOGIN
-function openLogin(){
-    alert("Login system (OTP) already added earlier");
+function login(){
+  alert("Login page next step");
 }
 
 </script>
