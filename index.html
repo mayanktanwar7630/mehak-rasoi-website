@@ -1,207 +1,111 @@
-<!DOCTYPE html>
-<html>
+<!DOCTYPE html><html lang="en">
 <head>
-<title>Mehak Rasoi</title>
+<meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
-
+<title>Mehak Rasoi Pro</title>
+<link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;600&display=swap" rel="stylesheet">
 <style>
-body {
-  margin: 0;
-  font-family: Arial;
-  background: #0b1220;
-  color: white;
-}
-
-/* Navbar */
-.navbar {
-  display: flex;
-  justify-content: space-between;
-  padding: 15px;
-  background: #0b1220;
-}
-
-.logo {
-  color: #22c55e;
-  font-size: 22px;
-  font-weight: bold;
-}
-
-.nav-buttons button {
-  margin-left: 10px;
-  padding: 8px 14px;
-  border: none;
-  border-radius: 20px;
-  background: #22c55e;
-  color: black;
-}
-
-/* Hero */
-.hero {
-  padding: 40px 20px;
-}
-
-.hero h1 {
-  font-size: 28px;
-}
-
-.hero span {
-  color: #22c55e;
-}
-
-/* Shop */
-.products {
-  display: grid;
-  grid-template-columns: repeat(2,1fr);
-  gap: 10px;
-  padding: 10px;
-}
-
-.card {
-  background: #1e293b;
-  padding: 10px;
-  border-radius: 10px;
-}
-
-.card button {
-  background: #22c55e;
-  border: none;
-  padding: 5px;
-  margin-top: 5px;
-}
-
-/* Pages */
-.page {
-  display: none;
-}
-
-.active {
-  display: block;
-}
-
-/* Login */
-.login-box {
-  padding: 20px;
-}
-
-input {
-  width: 100%;
-  padding: 10px;
-  margin: 10px 0;
-}
-
-/* Cart */
-.cart-box {
-  padding: 20px;
-}
+*{margin:0;padding:0;box-sizing:border-box;font-family:'Poppins',sans-serif}
+body{background:#fffaf5;color:#333}
+header{background:#ff5a00;color:#fff;padding:15px 20px;display:flex;justify-content:space-between;align-items:center;position:sticky;top:0;z-index:1000}
+nav a{color:#fff;margin:0 10px;text-decoration:none}
+.hero{padding:90px 20px;text-align:center;background:linear-gradient(rgba(0,0,0,0.5),rgba(0,0,0,0.5)),url('https://images.unsplash.com/photo-1600891964599-f61ba0e24092');background-size:cover;color:#fff}
+.hero h2{font-size:34px;margin-bottom:10px}
+.btn{padding:12px 20px;border:none;border-radius:30px;margin:5px;cursor:pointer;font-weight:600}
+.call{background:#ffcc00}
+.whatsapp{background:#25D366;color:#fff}
+.section{padding:50px 20px}
+.section h2{text-align:center;margin-bottom:25px}
+.search{max-width:400px;margin:0 auto 20px;display:block;padding:10px;border-radius:20px;border:1px solid #ccc;width:90%}
+.cards{display:grid;grid-template-columns:repeat(auto-fit,minmax(220px,1fr));gap:15px}
+.card{background:#fff;padding:15px;border-radius:12px;box-shadow:0 4px 10px rgba(0,0,0,0.08);transition:0.3s}
+.card:hover{transform:translateY(-5px)}
+.card img{width:100%;height:140px;object-fit:cover;border-radius:10px;margin-bottom:10px}
+.price{float:right;color:#ff5a00;font-weight:600}
+.badge{background:#ff5a00;color:#fff;font-size:10px;padding:3px 6px;border-radius:6px;margin-left:5px}
+.category{margin-top:30px}
+.category h3{border-left:4px solid #ff5a00;padding-left:10px;margin-bottom:10px}
+footer{background:#222;color:#fff;text-align:center;padding:20px}
+.sticky-bar{position:fixed;bottom:0;width:100%;display:flex}
+.sticky-bar a{flex:1;text-align:center;padding:14px;color:#fff;text-decoration:none;font-weight:600}
+.call-bar{background:#ff5a00}
+.wa-bar{background:#25D366}
 </style>
 </head>
-
 <body>
-
-<!-- NAVBAR -->
-<div class="navbar">
-  <div class="logo">Mehak Rasoi</div>
-  <div class="nav-buttons">
-    <button onclick="showPage('shopPage')">Shop</button>
-    <button onclick="showPage('cartPage')">Cart (<span id="cartCount">0</span>)</button>
-    <button onclick="showPage('loginPage')">Login</button>
-  </div>
+<header>
+<h2>Mehak Rasoi</h2>
+<nav>
+<a href="#menu">Menu</a>
+<a href="#contact">Contact</a>
+</nav>
+</header><section class="hero">
+<h2>Fresh North Indian Food in Chandigarh</h2>
+<p>Pure Veg • Budget Friendly • Fast Service</p>
+<button class="btn call" onclick="callNow()">📞 Call Now</button>
+<button class="btn whatsapp" onclick="whatsapp()">💬 WhatsApp</button>
+</section><section class="section" id="menu">
+<h2>🍽 Full Menu</h2>
+<input type="text" id="search" class="search" placeholder="Search food..." onkeyup="searchMenu()"><div id="menuItems"><div class="category">
+<h3>🔥 Popular</h3>
+<div class="cards">
+<div class="card"><img src="https://images.unsplash.com/photo-1603894584373-5ac82b2ae398"><h4>Paneer Butter Masala <span class="badge">Hot</span><span class="price">₹210</span></h4></div>
+<div class="card"><img src="https://images.unsplash.com/photo-1628294896516-77f8e0d3f2c2"><h4>Veg Biryani <span class="price">₹120</span></h4></div>
 </div>
-
-<!-- HOME -->
-<div id="homePage" class="active">
-  <div class="hero">
-    <h1>Fresh Groceries, <span>Delivered Fast</span></h1>
-    <p>Everything you need at your doorstep</p>
-    <button onclick="showPage('shopPage')">Shop Now</button>
-  </div>
+</div><div class="category">
+<h3>🥐 Breakfast</h3>
+<div class="cards">
+<div class="card"><h4>Aloo Paratha <span class="price">₹60</span></h4></div>
+<div class="card"><h4>Paneer Paratha <span class="price">₹80</span></h4></div>
+<div class="card"><h4>Channa Bhatura <span class="price">₹90</span></h4></div>
 </div>
-
-<!-- SHOP -->
-<div id="shopPage" class="page">
-  <h2 style="padding:10px;">Shop</h2>
-
-  <div class="products">
-    <div class="card">
-      <h3>Milk (Amul)</h3>
-      ₹60
-      <button onclick="addToCart('Milk',60)">Add</button>
-    </div>
-
-    <div class="card">
-      <h3>Paneer</h3>
-      ₹220
-      <button onclick="addToCart('Paneer',220)">Add</button>
-    </div>
-
-    <div class="card">
-      <h3>Butter</h3>
-      ₹120
-      <button onclick="addToCart('Butter',120)">Add</button>
-    </div>
-
-    <div class="card">
-      <h3>Snacks Combo</h3>
-      ₹80
-      <button onclick="addToCart('Snacks',80)">Add</button>
-    </div>
-  </div>
+</div><div class="category">
+<h3>🍛 Main Course</h3>
+<div class="cards">
+<div class="card"><h4>Shahi Paneer <span class="price">₹220</span></h4></div>
+<div class="card"><h4>Kadai Paneer <span class="price">₹210</span></h4></div>
+<div class="card"><h4>Palak Paneer <span class="price">₹200</span></h4></div>
 </div>
-
-<!-- CART -->
-<div id="cartPage" class="page">
-  <div class="cart-box">
-    <h2>Cart</h2>
-    <div id="cartItems"></div>
-    <h3>Total: ₹<span id="totalPrice">0</span></h3>
-  </div>
+</div><div class="category">
+<h3>🍜 Chinese</h3>
+<div class="cards">
+<div class="card"><h4>Momos <span class="price">₹80</span></h4></div>
+<div class="card"><h4>Manchurian <span class="price">₹120</span></h4></div>
+<div class="card"><h4>Chowmein <span class="price">₹100</span></h4></div>
 </div>
-
-<!-- LOGIN -->
-<div id="loginPage" class="page">
-  <div class="login-box">
-    <h2>Login</h2>
-    <input placeholder="Enter Email or Phone">
-    <button onclick="fakeLogin()">Send OTP</button>
-  </div>
+</div><div class="category">
+<h3>🍕 Pizza & Pasta</h3>
+<div class="cards">
+<div class="card"><h4>Margherita Pizza <span class="price">₹120</span></h4></div>
+<div class="card"><h4>White Sauce Pasta <span class="price">₹150</span></h4></div>
 </div>
+</div><div class="category">
+<h3>🥤 Shakes & Drinks</h3>
+<div class="cards">
+<div class="card"><h4>Chocolate Shake <span class="price">₹90</span></h4></div>
+<div class="card"><h4>Mango Shake <span class="price">₹80</span></h4></div>
+</div>
+</div></div>
+</section><section class="section" id="contact">
+<h2>📍 Contact</h2>
+<p style="text-align:center">SCF 15, Milk Colony, Dhanas, Chandigarh</p>
+<p style="text-align:center">📞 098783 31566</p>
+</section><footer>
+<p>© 2026 Mehak Rasoi</p>
+</footer><div class="sticky-bar">
+<a href="tel:09878331566" class="call-bar">📞 Call</a>
+<a href="https://wa.me/919878331566" class="wa-bar">💬 WhatsApp</a>
+</div><script>
+function callNow(){window.location.href='tel:09878331566'}
+function whatsapp(){window.location.href='https://wa.me/919878331566'}
 
-<!-- SCRIPT -->
-<script>
-let cart = [];
-let total = 0;
-
-function showPage(page) {
-  document.getElementById("homePage").classList.remove("active");
-  document.getElementById("shopPage").classList.remove("active");
-  document.getElementById("cartPage").classList.remove("active");
-  document.getElementById("loginPage").classList.remove("active");
-
-  document.getElementById(page).classList.add("active");
+function searchMenu(){
+let input=document.getElementById('search').value.toLowerCase();
+let cards=document.querySelectorAll('.card');
+cards.forEach(card=>{
+let text=card.innerText.toLowerCase();
+card.style.display=text.includes(input)?'block':'none';
+});
 }
-
-function addToCart(name, price) {
-  cart.push({name, price});
-  total += price;
-
-  document.getElementById("cartCount").innerText = cart.length;
-  renderCart();
-}
-
-function renderCart() {
-  let items = "";
-  cart.forEach(item => {
-    items += `<p>${item.name} - ₹${item.price}</p>`;
-  });
-
-  document.getElementById("cartItems").innerHTML = items;
-  document.getElementById("totalPrice").innerText = total;
-}
-
-function fakeLogin() {
-  alert("OTP Sent (Demo)");
-}
-</script>
-
-</body>
+</script></body>
 </html>
